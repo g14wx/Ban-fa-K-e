@@ -14,7 +14,7 @@ namespace EfModels.Models
         public int Id { get; set; }
         public String NCuenta { get; set; }
         public String Pin { get; set; }
-        [JsonIgnore]
+        [ForeignKey("IdUser")] public int IdUser { get; set; }
         public User user { get; set; }
         [JsonIgnore]
         public List<CuentaAhorro> CuentasDeAhorros { get; set; }

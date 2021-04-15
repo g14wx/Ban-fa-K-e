@@ -20,10 +20,6 @@ namespace EfModels
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>()
-                .HasOne(u => u.CntBancaria);
-            modelBuilder.Entity<CuentaBancaria>()
-                .HasOne(c => c.user);
             modelBuilder.Entity<CuentaBancaria>()
                 .HasMany(c => c.CuentasDeAhorros);
             modelBuilder.Entity<CuentaBancaria>()
