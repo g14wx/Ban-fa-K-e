@@ -26,8 +26,22 @@ using lab2.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "/home/g14wx/RiderProjects/lab2/lab2/Views/_ViewImports.cshtml"
+using lab2.Domain.Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "/home/g14wx/RiderProjects/lab2/lab2/Views/_ViewImports.cshtml"
+using EfModels.Models;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a6f0a25dd986824a6d78dc2e3c634fde45e29476", @"/Views/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0a4f00f4664ee991d6a00ef286cb6d5084f3adc3", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e21a7ecb8f386ec6efef01b064605051e5625b13", @"/Views/_ViewImports.cshtml")]
     public class Views__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

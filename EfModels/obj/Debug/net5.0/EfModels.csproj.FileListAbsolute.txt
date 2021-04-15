@@ -1,0 +1,15 @@
+/home/g14wx/RiderProjects/lab2/EfModels/bin/Debug/net5.0/EfModels.deps.json
+/home/g14wx/RiderProjects/lab2/EfModels/bin/Debug/net5.0/EfModels.runtimeconfig.json
+/home/g14wx/RiderProjects/lab2/EfModels/bin/Debug/net5.0/EfModels.runtimeconfig.dev.json
+/home/g14wx/RiderProjects/lab2/EfModels/bin/Debug/net5.0/EfModels.dll
+/home/g14wx/RiderProjects/lab2/EfModels/bin/Debug/net5.0/ref/EfModels.dll
+/home/g14wx/RiderProjects/lab2/EfModels/bin/Debug/net5.0/EfModels.pdb
+/home/g14wx/RiderProjects/lab2/EfModels/obj/Debug/net5.0/EfModels.csprojAssemblyReference.cache
+/home/g14wx/RiderProjects/lab2/EfModels/obj/Debug/net5.0/EfModels.GeneratedMSBuildEditorConfig.editorconfig
+/home/g14wx/RiderProjects/lab2/EfModels/obj/Debug/net5.0/EfModels.AssemblyInfoInputs.cache
+/home/g14wx/RiderProjects/lab2/EfModels/obj/Debug/net5.0/EfModels.AssemblyInfo.cs
+/home/g14wx/RiderProjects/lab2/EfModels/obj/Debug/net5.0/EfModels.csproj.CoreCompileInputs.cache
+/home/g14wx/RiderProjects/lab2/EfModels/obj/Debug/net5.0/EfModels.dll
+/home/g14wx/RiderProjects/lab2/EfModels/obj/Debug/net5.0/ref/EfModels.dll
+/home/g14wx/RiderProjects/lab2/EfModels/obj/Debug/net5.0/EfModels.pdb
+/home/g14wx/RiderProjects/lab2/EfModels/obj/Debug/net5.0/EfModels.genruntimeconfig.cache

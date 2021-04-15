@@ -2,9 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EfModels;
+using lab2.Domain.Contracts;
+using lab2.Infrastructure.Repositories;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,7 +28,13 @@ namespace lab2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            String connectionString = Configuration.GetConnectionString("sqliteStringConnection");
             services.AddControllersWithViews();
+            services.AddDbContext<MyDbContext>(options => options.UseSqlite(connectionString));
+            services.AddAutoMapper(typeof(Startup));
+            services.AddMediatR(typeof(Startup).Assembly);
+            //repositories
+            services.AddScoped<IUserRepository, UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

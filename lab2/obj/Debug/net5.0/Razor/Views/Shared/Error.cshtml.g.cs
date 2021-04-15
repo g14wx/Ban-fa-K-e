@@ -26,8 +26,22 @@ using lab2.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "/home/g14wx/RiderProjects/lab2/lab2/Views/_ViewImports.cshtml"
+using lab2.Domain.Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "/home/g14wx/RiderProjects/lab2/lab2/Views/_ViewImports.cshtml"
+using EfModels.Models;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"20fc76d5ca492ee449acb1af331b1c15fce9fea9", @"/Views/Shared/Error.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0a4f00f4664ee991d6a00ef286cb6d5084f3adc3", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e21a7ecb8f386ec6efef01b064605051e5625b13", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Error : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<ErrorViewModel>
     {
         #pragma warning disable 1998
