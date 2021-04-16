@@ -1,5 +1,5 @@
 @using lab2.Application
-@model List<lab2.Domain.Models.CuentaAhorro>
+@model List<lab2.Domain.DTOs.CuentaAhorroDTO>
 <div class="mx-auto w-full container bg-white dark:bg-gray-800 dark:bg-gray-800 shadow rounded"
      xmlns="http://www.w3.org/1999/html">
   <div class="w-full flex flex-row justify-between items-center py-5 mt-16">
@@ -23,10 +23,12 @@
         <th
           class="text-gray-600 dark:text-gray-400 font-normal pr-6 text-left text-sm tracking-normal leading-4">
           Amount</th>
-        
         <th
           class="text-gray-600 dark:text-gray-400 font-normal pr-6 text-left text-sm tracking-normal leading-4">
           Interest rate</th>
+          <th
+                    class="text-gray-600 dark:text-gray-400 font-normal pr-6 text-left text-sm tracking-normal leading-4">
+                    Profits</th>
         <td
           class="text-gray-600 dark:text-gray-400 font-normal pr-8 text-left text-sm tracking-normal leading-4">
           More</td>
@@ -48,12 +50,14 @@
             class="pl-8 pr-6 text-left whitespace-no-wrap text-sm text-gray-800 dark:text-gray-100 tracking-normal leading-4">@savingAccount.Id</td>
           <td
             class="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">
-            @savingAccount.Saldo</td>
+            $@savingAccount.Saldo</td>
 
           <td
             class="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">
             @savingAccount.TasaInteresMensual</td>
-
+          <td
+                      class="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">
+                      $@savingAccount.Ganacias</td>
           <td class="pr-8 relative">
             <div
               class="dropdown-content mt-8 absolute left-0 -ml-12 shadow-md z-10 hidden w-32">
@@ -139,8 +143,8 @@
                  <div class="my-8 mx-auto xl:w-full xl:mx-0">
                    <div class="xl:flex lg:flex md:flex flex-wrap justify-between">
                      <div class="xl:w-2/5 lg:w-2/5 md:w-2/5 flex flex-col mb-6">
-                       <label for="UserName" class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">BankAccount's Pin</label>
-                       <input type="text" name="Saldo" required id="Name" class="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm rounded text-sm focus:outline-none bg-transparent focus:border-indigo-700 text-gray-800 dark:text-gray-100" placeholder="Account's Ammount" />
+                       <label for="UserName" class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Amount</label>
+                       <input type="number" step="0.1" min="1.0" name="Saldo" required id="Name" class="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm rounded text-sm focus:outline-none bg-transparent focus:border-indigo-700 text-gray-800 dark:text-gray-100" placeholder="Account's Ammount" />
                        <input type="hidden" name="IdCuentaBancaria" value="@ViewBag.IdCuentaBancaria"/>
                      </div>
                      </div>

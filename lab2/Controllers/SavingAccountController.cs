@@ -23,7 +23,7 @@ namespace lab2.Controllers
         {
             ViewBag.IdCuentaBancaria = Int16.Parse(Request.Cookies["IdBankAccount"]);
             ViewData["Title"] = "Saving Accounts";
-            List<CuentaAhorro> cntAhrAhorros = await _mediator.Send(new GetAllSavingAccounts.Query(IdBankAccount));
+            List<CuentaAhorroDTO> cntAhrAhorros = await _mediator.Send(new GetAllSavingAccounts.Query(IdBankAccount));
             return View(cntAhrAhorros);
         }
 

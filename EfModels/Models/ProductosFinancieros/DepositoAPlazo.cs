@@ -11,8 +11,7 @@ namespace EfModels.Models.ProductosFinancieros
         public int Id { get; set; }
         public double Cantidad{ get; set; }
         public double TasaInteres{ get; set; }
-        public DateTime FechaPlazo { get; set; }
-        public DateTime FechaInicio { get; set; }
+        public int CantidadDias { get; set; }
         [ForeignKey("CuentaBancaria")]
         public int IdCuentaBancaria { get; set; }
         public CuentaBancaria CntBancaria { get; set; }

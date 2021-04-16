@@ -1,5 +1,5 @@
 @using lab2.Application
-@model List<DepositoAPlazo>
+@model List<lab2.Domain.DTOs.DepositoAPlazoDTO>
 
 <div class="mx-auto w-full container bg-white dark:bg-gray-800 dark:bg-gray-800 shadow rounded"
      xmlns="http://www.w3.org/1999/html">
@@ -33,10 +33,10 @@
           Interest rate</td>
          <td
           class="text-gray-600 dark:text-gray-400 font-normal pr-8 text-left text-sm tracking-normal leading-4">
-          Start date</td>
+          Days</td>
           <td
           class="text-gray-600 dark:text-gray-400 font-normal pr-8 text-left text-sm tracking-normal leading-4">
-          Deadline date</td>
+          Profits</td>
         <td
           class="text-gray-600 dark:text-gray-400 font-normal pr-8 text-left text-sm tracking-normal leading-4">
           More
@@ -69,10 +69,10 @@
             @timeDeposit.TasaInteres</td>
            <td
             class="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">
-            @timeDeposit.FechaInicio</td>
+            @timeDeposit.CantidadDias</td>
             <td
             class="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">
-            @timeDeposit.FechaPlazo</td>
+            @timeDeposit.Ganacias</td>
 
           <td class="pr-8 relative">
             <div
@@ -143,7 +143,7 @@
       <!--Body-->
        <div class="bg-gray-200" v-if="team && renderForm">
          <div>
-           <form id="form" class=" mx-auto bg-white shadow rounded" asp-controller="TimeDeposit" asp-action="" >
+           <form id="form" class=" mx-auto bg-white shadow rounded" asp-controller="TimeDeposit" asp-action="CreateTimeDepositAccount" >
              <div class="xl:w-full border-b border-gray-300 dark:border-gray-700 py-5">
                <div class="flex items-center w-11/12 mx-auto">
                  <p class="text-lg text-gray-800 dark:text-gray-100 font-bold">Account's Information</p>
@@ -164,13 +164,22 @@
                        <input type="hidden" name="IdCuentaBancaria" value="@ViewBag.IdBankAccount"/>
                      </div>
                      <div class="xl:w-2/5 lg:w-2/5 md:w-2/5 flex flex-col mb-6">
-                      <label for="" class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Time Deposit's Deadline Date</label>
-                      <input type="datetime" name="FechaPlazo" required id="ammount" class="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm rounded text-sm focus:outline-none bg-transparent focus:border-indigo-700 text-gray-800 dark:text-gray-100"  />
+                       <label for="" class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Days</label>
+                       <!-- This is an example component -->
+                       <div class="relative inline-flex">
+                         <svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 232"><path d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"/></svg>
+                         <select name="CantidadDias" class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none">
+                           <option value="30" selected>30 Days</option>
+                           <option value="60">60 Days</option>
+                           <option value="90">90 Days</option>
+                           <option value="120">120 Days</option>
+                           <option value="150">150 Days</option>
+                           <option value="180">180 Days</option>
+                           <option value="360">360 Days</option>
+                         </select>
+                       </div>
                     </div>
-                    <div class="xl:w-2/5 lg:w-2/5 md:w-2/5 flex flex-col mb-6">
-                      <label for="" class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Time Deposit's Deadline Date</label>
-                      <input type="datetime" name="FechaInicio" required id="ammount" class="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm rounded text-sm focus:outline-none bg-transparent focus:border-indigo-700 text-gray-800 dark:text-gray-100" />
-                    </div>
+                    
                      </div>
                      </div>
                  </div>

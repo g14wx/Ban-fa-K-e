@@ -9,7 +9,7 @@ namespace lab2.Application.Commands.TimeDeposit
 {
     public class AddTimeDeposit
     {
-        public record Command(double Cantidad, double TasaInteres, DateTime FechaPlazo, DateTime FechaInicio, int IdCuentaBancaria): IRequest<DepositoAPlazo>;
+        public record Command(double Cantidad, int CantidadDias, int IdCuentaBancaria): IRequest<DepositoAPlazo>;
         
         public class Handler : IRequestHandler<Command, DepositoAPlazo>
         {
@@ -20,16 +20,34 @@ namespace lab2.Application.Commands.TimeDeposit
             }
             public async Task<DepositoAPlazo> Handle(Command request, CancellationToken cancellationToken)
             {
+                double tasaDeInteres = GetInterestRateByNDays(request.CantidadDias);
                 DepositoAPlazo dp = await _repository.CreateTimeDeposit(new DepositoAPlazo()
                 {
                     Cantidad = request.Cantidad,
-                    FechaInicio = request.FechaInicio,
-                    FechaPlazo = request.FechaPlazo,
-                    TasaInteres = request.TasaInteres,
+                    CantidadDias = request.CantidadDias,
+                    TasaInteres = tasaDeInteres,
                     IdCuentaBancaria = request.IdCuentaBancaria
                 });
 
                 return dp;
+            }
+
+            public double GetInterestRateByNDays(int ndays)
+            {
+                if (ndays >= 30 && ndays <= 90)
+                {
+                    return 0.50;
+                }else if (ndays>=120 && ndays <= 150)
+                {
+                    return 0.75;
+                }else if (ndays>=180)
+                {
+                    return 1.00;
+                }
+                else
+                {
+                    return 0.0;
+                }
             }
         }
     }
