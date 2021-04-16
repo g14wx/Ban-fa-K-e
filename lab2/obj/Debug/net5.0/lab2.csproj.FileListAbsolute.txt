@@ -85,3 +85,9 @@
 /home/g14wx/RiderProjects/lab2/lab2/bin/Debug/net5.0/EfModels.dll
 /home/g14wx/RiderProjects/lab2/lab2/bin/Debug/net5.0/EfModels.pdb
 /home/g14wx/RiderProjects/lab2/lab2/obj/Debug/net5.0/Razor/Views/User/Index.cshtml.g.cs
+/home/g14wx/RiderProjects/lab2/lab2/obj/Debug/net5.0/Razor/Views/BankAccount/Index.cshtml.g.cs
+/home/g14wx/RiderProjects/lab2/lab2/obj/Debug/net5.0/Razor/Views/SavingAccount/Index.cshtml.g.cs
+/home/g14wx/RiderProjects/lab2/lab2/obj/Debug/net5.0/Razor/Views/SavingAccount/SavingAccount.cshtml.g.cs
+/home/g14wx/RiderProjects/lab2/lab2/obj/Debug/net5.0/Razor/Views/BankAccount/GetAccountProducts.cshtml.g.cs
+/home/g14wx/RiderProjects/lab2/lab2/obj/Debug/net5.0/Razor/Views/CheckingAccount/Index.cshtml.g.cs
+/home/g14wx/RiderProjects/lab2/lab2/obj/Debug/net5.0/Razor/Views/TimeDeposit/Index.cshtml.g.cs

@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using lab2.Application;
 using lab2.Application.Commands.User;
 using lab2.Application.Queries.User;
 using lab2.Domain.DTOs;
@@ -24,14 +26,26 @@ namespace lab2.Controllers
         public async Task<IActionResult> Index()
         {
             var users = await _mediator.Send(new GetAllusers.Query());
-            _logger.LogInformation(users[0].Name);
             return View(users);
+        }
+        [HttpGet("{statusCode}")]
+        public async Task<IActionResult> Index(Status statusCode)
+        {
+            ViewBag.STATUSUSERS = statusCode;
+            var users = await _mediator.Send(new GetAllusers.Query());
+            return View(users);
+        }
+        [HttpPost("")]
+        public async Task<RedirectResult> CreateUser(UserDto user)
+        {
+            var response = await _mediator.Send(new AdduserCommand.Command(user.Name));
+            return new RedirectResult($"/users/{Status.CREATED}");
         }
 
         [HttpPost("{id}")]
-        public IActionResult Deleteuser(int id)
+        public async Task<RedirectResult> Deleteuser(int id)
         {
-           return Ok("");
+           return new RedirectResult($"/users/{Status.DELETED}");
         }
 
         [HttpPost("api")]
@@ -48,5 +62,7 @@ namespace lab2.Controllers
 
             return response == null ? NotFound() : Ok(response);
         }
+
+        
     }
 }

@@ -35,6 +35,10 @@ namespace lab2
             services.AddMediatR(typeof(Startup).Assembly);
             //repositories
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IBankAccountRepository, BankAccountRepository>();
+            services.AddScoped<ISavingAccountRepository,SavingAccountRepository>();
+            services.AddScoped<ITimeDepositRepository, TimeDepositRepository>();
+            services.AddScoped<ICheckingAccountRepository, CheckingAccountRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

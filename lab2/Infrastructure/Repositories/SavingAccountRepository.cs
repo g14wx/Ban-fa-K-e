@@ -1,0 +1,48 @@
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using AutoMapper;
+using EfModels;
+using lab2.Domain.Contracts;
+using lab2.Domain.Models;
+using CuentaBancaria = EfModels.Models.CuentaBancaria;
+
+namespace lab2.Infrastructure.Repositories
+{
+    public class SavingAccountRepository: ISavingAccountRepository
+    {
+        private MyDbContext _db;
+        private IMapper _mapper;
+        public SavingAccountRepository(MyDbContext context, IMapper mapper)
+        {
+            _mapper = mapper;
+            _db = context;
+        }
+        public async Task<List<CuentaAhorro>> GetAllSavingAccountFromABankAccount(int IdBankAccount)
+        {
+
+            List<EfModels.Models.ProductosFinancieros.CuentaAhorro> cuentasAhorros =
+             _db.CuentaAhorros.Where(c => c.IdCuentaBancaria == IdBankAccount).ToList();
+            List<CuentaAhorro> accounts= _mapper.Map<List<EfModels.Models.ProductosFinancieros.CuentaAhorro>, List<CuentaAhorro>>(cuentasAhorros);
+            return accounts;
+        }
+
+        public async Task<CuentaAhorro> FindSavingAccount(int IdSavingAccount)
+        {
+
+            EfModels.Models.ProductosFinancieros.CuentaAhorro cuentaAhorro =
+                _db.CuentaAhorros.FirstOrDefault(c => c.Id == IdSavingAccount);
+            return _mapper.Map<CuentaAhorro>(cuentaAhorro);
+        }
+
+        public async Task<CuentaAhorro> CreateSavingAccount(CuentaAhorro cuentaAhorro)
+        {
+            EfModels.Models.ProductosFinancieros.CuentaAhorro savingAccount = _mapper
+                .Map<EfModels.Models.ProductosFinancieros.CuentaAhorro>(cuentaAhorro);
+            
+            await _db.CuentaAhorros.AddAsync(savingAccount);
+            await _db.SaveChangesAsync();
+            return _mapper.Map<CuentaAhorro>(savingAccount);
+        }
+    }
+}

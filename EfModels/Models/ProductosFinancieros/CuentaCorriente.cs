@@ -8,7 +8,7 @@ namespace EfModels.Models.ProductosFinancieros
     {
         [Key]
         public int Id { get; set; }
-        private double Saldo { get; set; }
+        public double Saldo { get; set; }
         [ForeignKey("CuentaBancaria")]
         public int IdCuentaBancaria { get; set; }
         public CuentaBancaria CntBancaria { get; set; }
