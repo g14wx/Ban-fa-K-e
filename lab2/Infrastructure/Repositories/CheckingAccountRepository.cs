@@ -76,7 +76,8 @@ private IMapper _mapper;
             EfModels.Models.ProductosFinancieros.CuentaCorriente checkingAccount =
                 _db.CuentaCorrientes.FirstOrDefault(ch => ch.Id == IdCheckingAccount);
                 checkingAccount.Saldo += Amount;
-                _db.Update(checkingAccount);
+                _db.CuentaCorrientes.Attach(checkingAccount);
+                _db.Entry(checkingAccount).State = EntityState.Modified;
                 await _db.SaveChangesAsync();
                 return true;
         }

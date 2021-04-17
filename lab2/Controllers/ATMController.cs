@@ -99,7 +99,7 @@ namespace lab2.Controllers
         }
 
         [HttpPost("Credit")]
-        public async Task<bool> Credit(TransaccionDTO transaccionDto)
+        public async Task<IActionResult> Credit(TransaccionDTO transaccionDto)
         {
             bool response = true;
             switch (transaccionDto.Account)
@@ -112,10 +112,11 @@ namespace lab2.Controllers
                     break;
             }
 
-            return response;
+            return new RedirectResult($"/account/{transaccionDto.IdAccount}/{transaccionDto.Account}");
 
         }
-        public async Task<ViewResult> WithDraw(TransaccionDTO transaccionDto)
+        [HttpPost("withdraw")]
+        public async Task<IActionResult> WithDraw(TransaccionDTO transaccionDto)
         {
             bool response= true;
                     switch (transaccionDto.Account)
@@ -123,10 +124,11 @@ namespace lab2.Controllers
                         case "Saving":
                             break;
                         case "Cheking" :
+                            response = await _mediator.Send(new WithDrawChecking.Command(transaccionDto.IdAccount,transaccionDto.Amount));
                             break;
                     }
 
-                    return View("ShowAccounts");
+            return new RedirectResult($"/account/{transaccionDto.IdAccount}/{transaccionDto.Account}");
         }
 
     }

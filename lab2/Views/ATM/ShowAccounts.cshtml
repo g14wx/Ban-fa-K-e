@@ -29,7 +29,7 @@
                                     type="number"
                                     required
                                     step="0.01"
-                                    name="Monto"
+                                    name="Amount"
                                     class="h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm"/>
                                      <input type="hidden" name="Account" value="@ViewBag.Account" >
                                                                     <input type="hidden" name="IdAccount" value="@ViewBag.IdAccount" >
@@ -39,7 +39,7 @@
                             <input type="submit" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
                             </input>
                         </form>
-                        <form asp-controller="ATM" asp-action="WithDraw" class='flex max-w-sm w-full h-64 justify-center bg-white shadow-md rounded-lg overflow-hidden mx-auto flex flex-col p-5'>
+                        <form asp-controller="ATM" method="post" asp-action="WithDraw" class='flex max-w-sm w-full h-64 justify-center bg-white shadow-md rounded-lg overflow-hidden mx-auto flex flex-col p-5'>
                             <h3 class="text-2xl font-bold mb-4">WithDraw</h3>
 
                             <!-- This is the input component -->
@@ -54,9 +54,9 @@
                                 <input type="hidden" name="IdAccount" value="@ViewBag.IdAccount" >
                             </div>
 
-                            <button class="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded">
+                            <input type="submit" class="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded">
                                 WithDraw
-                            </button>
+                            </input>
                         </form>
                     </div>
                    

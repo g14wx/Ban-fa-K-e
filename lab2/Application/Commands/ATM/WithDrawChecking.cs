@@ -5,23 +5,22 @@ using MediatR;
 
 namespace lab2.Application.Commands.ATM
 {
-    public class Credit
+    public class WithDrawChecking
     {
-        public record Command(int IdAccount,double amount) : IRequest<bool>;
-        
-        public class Handler : IRequestHandler<Command,bool>
-        {
-            private ICheckingAccountRepository _repository;
+        public record Command(int Id, double Amount):IRequest<bool>;
 
+        public class Handler : IRequestHandler<Command, bool>
+        {
+            private readonly ICheckingAccountRepository _repository;
             public Handler(ICheckingAccountRepository repository)
             {
                 _repository = repository;
             }
             public async Task<bool> Handle(Command request, CancellationToken cancellationToken)
             {
-                bool response = await _repository.CreditMoney(request.IdAccount, request.amount);
+                bool response = await _repository.WithDrawMoney(request.Id, request.Amount);
                 return response;
             }
-        }
+        };
     }
 }

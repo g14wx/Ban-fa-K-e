@@ -53,6 +53,7 @@ namespace lab2.Infrastructure.Repositories
                         checkingAccount.Saldo -= Amount;
                         checkingAccount.Dialy -= Amount;
                         _db.Update(checkingAccount);
+                        await _db.SaveChangesAsync();
                         return true;
                     }
                     else
@@ -68,6 +69,7 @@ namespace lab2.Infrastructure.Repositories
         
                         checkingAccount.Saldo += Amount;
                         _db.Update(checkingAccount);
+                        await _db.SaveChangesAsync();
                         return true;
                }
     }
