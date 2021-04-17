@@ -91,3 +91,7 @@
 /home/g14wx/RiderProjects/lab2/lab2/obj/Debug/net5.0/Razor/Views/BankAccount/GetAccountProducts.cshtml.g.cs
 /home/g14wx/RiderProjects/lab2/lab2/obj/Debug/net5.0/Razor/Views/CheckingAccount/Index.cshtml.g.cs
 /home/g14wx/RiderProjects/lab2/lab2/obj/Debug/net5.0/Razor/Views/TimeDeposit/Index.cshtml.g.cs
+/home/g14wx/RiderProjects/lab2/lab2/obj/Debug/net5.0/Razor/Views/ATM/Index.cshtml.g.cs
+/home/g14wx/RiderProjects/lab2/lab2/bin/Debug/net5.0/CreditCardValidator.dll
+/home/g14wx/RiderProjects/lab2/lab2/obj/Debug/net5.0/Razor/Views/ATM/ShowAccounts.cshtml.g.cs
+/home/g14wx/RiderProjects/lab2/lab2/obj/Debug/net5.0/Razor/Views/ATM/ShowATM.cshtml.g.cs

@@ -39,10 +39,36 @@ namespace lab2.Infrastructure.Repositories
         {
             EfModels.Models.ProductosFinancieros.CuentaAhorro savingAccount = _mapper
                 .Map<EfModels.Models.ProductosFinancieros.CuentaAhorro>(cuentaAhorro);
-            
+            cuentaAhorro.IsActive = true;
             await _db.CuentaAhorros.AddAsync(savingAccount);
             await _db.SaveChangesAsync();
             return _mapper.Map<CuentaAhorro>(savingAccount);
         }
+        public async Task<bool> WithDrawMoney(int IdCheckingAccount, double Amount)
+                {
+                    EfModels.Models.ProductosFinancieros.CuentaCorriente checkingAccount =
+                        _db.CuentaCorrientes.FirstOrDefault(ch => ch.Id == IdCheckingAccount);
+                    if (Amount <= 400.00 && checkingAccount.Dialy <= 1000.00)
+                    {
+                        checkingAccount.Saldo -= Amount;
+                        checkingAccount.Dialy -= Amount;
+                        _db.Update(checkingAccount);
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+        
+                }
+                public async Task<bool> CreditMoney(int IdCheckingAccount, double Amount)
+                {
+                    EfModels.Models.ProductosFinancieros.CuentaCorriente checkingAccount =
+                        _db.CuentaCorrientes.FirstOrDefault(ch => ch.Id == IdCheckingAccount);
+        
+                        checkingAccount.Saldo += Amount;
+                        _db.Update(checkingAccount);
+                        return true;
+               }
     }
 }

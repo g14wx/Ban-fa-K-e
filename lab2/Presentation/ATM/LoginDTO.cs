@@ -1,11 +1,10 @@
 using System;
 
-namespace lab2.Domain.DTOs
+namespace lab2.Presentation.ATM
 {
-    public class BankAccountDTO
+    public class LoginDTO
     {
         public String Pin { get; set; }
         public String NCuenta { get; set; } 
-        public int IdUser { get; set; }
     }
 }

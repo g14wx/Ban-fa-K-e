@@ -8,5 +8,7 @@ namespace lab2.Domain.Models
         public int IdCuentaBancaria { get; set; }
         
         public int nMeses { get; set; }
+        
+        public bool IsActive { get; set; }
     }
 }

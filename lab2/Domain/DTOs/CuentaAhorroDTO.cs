@@ -9,5 +9,7 @@ namespace lab2.Domain.DTOs
         public double Ganacias { get; set; }
         
         public int Nmeses  {get;set; }
+        
+        public bool IsActive { get; set; }
     }
 }

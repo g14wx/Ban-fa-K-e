@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -38,6 +39,20 @@ namespace lab2.Infrastructure.Repositories
             EfModels.Models.CuentaBancaria cntBancaria =
                 _repository.CuentaBancarias.FirstOrDefault(c => c.Id == IdBankAccount);
             return _mapper.Map<CuentaBancaria>(cntBancaria);
+        }
+
+        public async Task<CuentaBancaria> FindBankAccountByNAccount(string NAccount,String Pin)
+        {
+            EfModels.Models.CuentaBancaria account =
+                _repository.CuentaBancarias.FirstOrDefault(x => x.NCuenta == NAccount && x.Pin == Pin );
+            if (account != null)
+            {
+                return _mapper.Map<CuentaBancaria>(account);
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

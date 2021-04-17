@@ -109,7 +109,6 @@
                   <!--#####################################################################################################-->
                   <div class="flex flex-col">
                     
-                    <a asp-controller="CheckingAccount" asp-action="Index" asp-route-IdBankAccount="@Model.cuentaBancaria.Id" type="button" class="ml-5 focus:outline-none text-white text-sm py-2.5 px-5 h-1/2 border-b-4 border-green-600 rounded-md bg-green-500 hover:bg-green-400">Manage</a>
                     <div
                       class="fas fa-map-marker-alt mr-2 text-lg text-gray-500">
                       Checking Accounts
@@ -165,19 +164,25 @@
                                   <div class="text-sm text-gray-900">$@checkingAccount.Saldo</div>
                                 </td>
                                   <td class="px-6 py-4 whitespace-nowrap">
-                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full  @if(@checkingAccount.IsActive){@Html.Raw("bg-green-100")}else{@Html.Raw(("bg-red-100"))} @if(@checkingAccount.IsActive){@Html.Raw("text-green-800")}else{@Html.Raw(("text-white"))}">
-                                     @if (@checkingAccount.IsActive)
-                                     {
-                                       @Html.Raw("Active");
-                                     }
-                                     else
-                                     {
-                                       @Html.Raw(("Inactive"));
-                                     }
-                                    </span>
+                                   <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full  @if(@checkingAccount.IsActive){@Html.Raw("bg-green-100")}else{@Html.Raw(("bg-red-100"))} @if(@checkingAccount.IsActive){@Html.Raw("text-green-800")}else{@Html.Raw(("text-white"))}">
+                                                                        @if (@checkingAccount.IsActive)
+                                                                        {
+                                                                          @Html.Raw("Active");
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                          @Html.Raw(("Inactive"));
+                                                                        }
+                                                                       </span>
                                   </td>
                                   <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                    @if (!@checkingAccount.IsActive)
+                                    {
+                                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Request Reactive</a>
+                                    }
+                                  </td>
+                                  <td scope="col" class="relative px-6 py-3">
+                                    <a asp-controller="ATM" asp-action="ShowAccounts" asp-route-IdAccount="@checkingAccount.Id" asp-route-account="Checking" class="text-indigo-600 hover:text-pink-900">OPEN ATM</a>
                                   </td>
                                 </tr>
                               }
@@ -195,7 +200,6 @@
                   <!--#####################################################################################################-->
                                     <div class="flex flex-col">
                                       
-                                      <a asp-controller="SavingAccount" asp-action="Index" asp-route-IdBankAccount="@Model.cuentaBancaria.Id" type="button" class="ml-5 focus:outline-none text-white text-sm py-2.5 px-5 h-1/2 border-b-4 border-green-600 rounded-md bg-green-500 hover:bg-green-400">Manage</a>
                                       <div
                                         class="fas fa-map-marker-alt mr-2 text-lg text-gray-500">
                                         Saving Accounts 
@@ -226,8 +230,10 @@
                                                  Profits 
                                                 </th>
                                                 <th scope="col" class="relative px-6 py-3">
-                                                  <span class="sr-only">Edit</span>
+                                                  <span class="sr-only">Request Reactive</span>
                                                 </th>
+                                                <th scope="col" class="relative px-6 py-3">
+                                            </th>
                                               </tr>
                                               </thead>
                                               <tbody class="bg-white divide-y divide-gray-200">
@@ -257,28 +263,39 @@
                                                        <div class="text-sm text-gray-900">$@savingAccount.Saldo</div>
                                                      </td>                                 
                                                     <td class="px-6 py-4 whitespace-nowrap">
-                                                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                          <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full  @if(@savingAccount.IsActive){@Html.Raw("bg-green-100")}else{@Html.Raw(("bg-red-100"))} @if(@savingAccount.IsActive){@Html.Raw("text-green-800")}else{@Html.Raw(("text-white"))}">
-                                     @if (@savingAccount.IsActive)
-                                     {
-                                       @Html.Raw("Active");
-                                     }
-                                     else
-                                     {
-                                       @Html.Raw(("Inactive"));
-                                     }
-                                    </span>
-                                                      </span>
+                                                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full  @if(@savingAccount.IsActive){@Html.Raw("bg-green-100")}else{@Html.Raw(("bg-red-100"))} @if(@savingAccount.IsActive){@Html.Raw("text-green-800")}else{@Html.Raw(("text-white"))}">
+                                                      @if (@savingAccount.IsActive)
+                                                      {
+                                                        @Html.Raw("Active");
+                                                      }
+                                                      else
+                                                      {
+                                                        @Html.Raw(("Inactive"));
+                                                      }
+                                                     </span>
                                                     </td>
                                                     <td class="px-6 py-4 whitespace-nowrap">
                                                       <div class="text-sm text-gray-900">@savingAccount.TasaInteresMensual</div>
                                                     </td>
                                                     <td class="px-6 py-4 whitespace-nowrap">
-                                                   <div class="text-sm text-gray-900">$@savingAccount.Ganacias</div>
-                                                 </td>
-                                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                                      <div class="text-sm text-gray-900">$@savingAccount.Ganacias</div>
                                                     </td>
+                                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                          <a asp-controller="ATM" asp-action="ShowAccounts" asp-route-IdAccount="@savingAccount.Id" asp-route-account="Saving" class="text-indigo-600 hover:text-pink-900">Request Reactive</a>
+                                                          </td>
+                                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                                      <a asp-controller="ATM" asp-action="ShowAccounts" asp-route-IdAccount="@savingAccount.Id" class="text-indigo-600 hover:text-pink-900">OPEN ATM</a>
+                                                    </td>
+                                                    @if (!@savingAccount.IsActive)
+                                                    {
+                                                       <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <a asp-controller="ATM" asp-action="ShowAccounts" asp-route-IdAccount="@savingAccount.Id" class="text-indigo-600 hover:text-pink-900">Request Reactive</a>
+                                                            </td>
+                                                    }
+                                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <a asp-controller="ATM" asp-action="ShowAccounts" asp-route-IdAccount="@savingAccount.Id" class="text-indigo-600 hover:text-pink-900">OPEN ATM</a>
+                                                    </td>
+                                                    
                                                   </tr>
                                                 }
                                               }
@@ -294,8 +311,6 @@
                 <!-- DEPOSITO A PLAZO -->
                   <!--#####################################################################################################-->
                                                       <div class="flex flex-col">
-                                                        
-                                                        <a asp-controller="TimeDeposit" asp-action="Index" asp-route-IdBankAccount="@Model.cuentaBancaria.Id" type="button" class="ml-5 focus:outline-none text-white text-sm py-2.5 px-5 h-1/2 border-b-4 border-green-600 rounded-md bg-green-500 hover:bg-green-400">Manage</a>
                                                         <div
                                                           class="fas fa-map-marker-alt mr-2 text-lg text-gray-500">
                                                           Time Deposits 

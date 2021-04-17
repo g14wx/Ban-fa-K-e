@@ -12,7 +12,7 @@ namespace EfModels.Models
     {
         [Key]
         public int Id { get; set; }
-        public Guid NCuenta { get; set; }
+        public String NCuenta { get; set; }
         public String Pin { get; set; }
         [ForeignKey("IdUser")] public int IdUser { get; set; }
         public User user { get; set; }

@@ -35,6 +35,7 @@
         "dependencies": {
           "AutoMapper": "10.1.1",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
+          "CreditCardValidator": "2.0.1",
           "EfModels": "1.0.0",
           "MediatR": "9.0.0",
           "MediatR.Extensions.Microsoft.DependencyInjection": "9.0.0",
@@ -356,6 +357,17 @@
         },
         "compile": {
           "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
+        }
+      },
+      "CreditCardValidator/2.0.1": {
+        "runtime": {
+          "lib/netcoreapp2.0/CreditCardValidator.dll": {
+            "assemblyVersion": "2.0.1.0",
+            "fileVersion": "2.0.1.0"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp2.0/CreditCardValidator.dll": {}
         }
       },
       "EntityFramework/6.4.4": {
@@ -2567,6 +2579,13 @@
       "sha512": "sha512-xSWoVzOipuDU4PeZcUfaZQ+xqXU8QmGv5jrdlxt3MYm9xaOmrefqcfzGQ3SQ+D+8wfBa/ZwSuL0qKOVj080inA==",
       "path": "automapper.extensions.microsoft.dependencyinjection/8.1.1",
       "hashPath": "automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512"
+    },
+    "CreditCardValidator/2.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8D+pnmcamVGonbG1AhmJwXDnR/l7e1pQwof0CIpIqMoJeGJfJKBQwjOw/amv82OMmjg0l6Xlub9agX1F1FMAtg==",
+      "path": "creditcardvalidator/2.0.1",
+      "hashPath": "creditcardvalidator.2.0.1.nupkg.sha512"
     },
     "EntityFramework/6.4.4": {
       "type": "package",

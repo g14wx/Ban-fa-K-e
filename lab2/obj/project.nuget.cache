@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "eI8gzdalWbGRh/AgIO8erXZVJMIn8rydHqwrtUTee8//3x22DAiY9LVPbmh79WeayNBzY2WwLzZ6k6BDwgwW3g==",
+  "dgSpecHash": "yij38CS5Ts2admK4DkBaSH1rgxb3CrG/GIYSBFQtn/CRpfwNmSKKbG2sczkxWDvYcwo3SggwjrmYC7W5lA7mqQ==",
   "success": true,
   "projectFilePath": "/home/g14wx/RiderProjects/lab2/lab2/lab2.csproj",
   "expectedPackageFiles": [
     "/home/g14wx/.nuget/packages/automapper/10.1.1/automapper.10.1.1.nupkg.sha512",
     "/home/g14wx/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/8.1.1/automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
+    "/home/g14wx/.nuget/packages/creditcardvalidator/2.0.1/creditcardvalidator.2.0.1.nupkg.sha512",
     "/home/g14wx/.nuget/packages/entityframework/6.4.4/entityframework.6.4.4.nupkg.sha512",
     "/home/g14wx/.nuget/packages/mediatr/9.0.0/mediatr.9.0.0.nupkg.sha512",
     "/home/g14wx/.nuget/packages/mediatr.extensions.microsoft.dependencyinjection/9.0.0/mediatr.extensions.microsoft.dependencyinjection.9.0.0.nupkg.sha512",

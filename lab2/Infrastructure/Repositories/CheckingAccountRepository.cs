@@ -39,6 +39,7 @@ private IMapper _mapper;
         {
             EfModels.Models.ProductosFinancieros.CuentaCorriente newCheckingAccount =
                 _mapper.Map<EfModels.Models.ProductosFinancieros.CuentaCorriente>(cuentaCorriente);
+            newCheckingAccount.IsActive = true;
             await _db.CuentaCorrientes.AddAsync(newCheckingAccount);
             await _db.SaveChangesAsync();
             return _mapper.Map<CuentaCorriente>(newCheckingAccount);
@@ -58,17 +59,26 @@ private IMapper _mapper;
         {
             EfModels.Models.ProductosFinancieros.CuentaCorriente checkingAccount =
                 _db.CuentaCorrientes.FirstOrDefault(ch => ch.Id == IdCheckingAccount);
-            checkingAccount.Saldo -= Amount;
-            _db.Update(checkingAccount);
-            return true;
+            if (Amount <= 400.00 && checkingAccount.Dialy <= 1000.00)
+            {
+                checkingAccount.Saldo -= Amount;
+                _db.Update(checkingAccount);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
         public async Task<bool> CreditMoney(int IdCheckingAccount, double Amount)
         {
             EfModels.Models.ProductosFinancieros.CuentaCorriente checkingAccount =
                 _db.CuentaCorrientes.FirstOrDefault(ch => ch.Id == IdCheckingAccount);
-            checkingAccount.Saldo += Amount;
-            _db.Update(checkingAccount);
-            return true;
+                checkingAccount.Saldo += Amount;
+                _db.Update(checkingAccount);
+                await _db.SaveChangesAsync();
+                return true;
         }
     }    
 }

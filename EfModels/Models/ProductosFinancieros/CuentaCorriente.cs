@@ -12,5 +12,7 @@ namespace EfModels.Models.ProductosFinancieros
         [ForeignKey("CuentaBancaria")]
         public int IdCuentaBancaria { get; set; }
         public CuentaBancaria CntBancaria { get; set; }
+        public bool IsActive { get; set; }
+        public double Dialy { get; set; }
     }
 }

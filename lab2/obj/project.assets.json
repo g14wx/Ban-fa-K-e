@@ -29,6 +29,15 @@
           "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
         }
       },
+      "CreditCardValidator/2.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp2.0/CreditCardValidator.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/CreditCardValidator.dll": {}
+        }
+      },
       "EntityFramework/6.4.4": {
         "type": "package",
         "dependencies": {
@@ -727,6 +736,25 @@
         "automapper.extensions.microsoft.dependencyinjection.nuspec",
         "icon.png",
         "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll"
+      ]
+    },
+    "CreditCardValidator/2.0.1": {
+      "sha512": "8D+pnmcamVGonbG1AhmJwXDnR/l7e1pQwof0CIpIqMoJeGJfJKBQwjOw/amv82OMmjg0l6Xlub9agX1F1FMAtg==",
+      "type": "package",
+      "path": "creditcardvalidator/2.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "creditcardvalidator.2.0.1.nupkg.sha512",
+        "creditcardvalidator.nuspec",
+        "lib/net40/CreditCardValidator.dll",
+        "lib/net45/CreditCardValidator.dll",
+        "lib/net46/CreditCardValidator.dll",
+        "lib/netcoreapp1.0/CreditCardValidator.dll",
+        "lib/netcoreapp1.1/CreditCardValidator.dll",
+        "lib/netcoreapp2.0/CreditCardValidator.dll",
+        "lib/netstandard1.0/CreditCardValidator.dll",
+        "lib/netstandard2.0/CreditCardValidator.dll"
       ]
     },
     "EntityFramework/6.4.4": {
@@ -2041,6 +2069,7 @@
     "net5.0": [
       "AutoMapper >= 10.1.1",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 8.1.1",
+      "CreditCardValidator >= 2.0.1",
       "EfModels >= 1.0.0",
       "MediatR >= 9.0.0",
       "MediatR.Extensions.Microsoft.DependencyInjection >= 9.0.0"
@@ -2094,6 +2123,10 @@
           "AutoMapper.Extensions.Microsoft.DependencyInjection": {
             "target": "Package",
             "version": "[8.1.1, )"
+          },
+          "CreditCardValidator": {
+            "target": "Package",
+            "version": "[2.0.1, )"
           },
           "MediatR": {
             "target": "Package",
