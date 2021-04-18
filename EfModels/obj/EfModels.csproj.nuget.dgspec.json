@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/home/g14wx/RiderProjects/lab2/EfModels/EfModels.csproj": {}
+    "D:\\Programs\\Visual Studio\\Projects\\LAb\\EfModels\\EfModels.csproj": {}
   },
   "projects": {
-    "/home/g14wx/RiderProjects/lab2/EfModels/EfModels.csproj": {
+    "D:\\Programs\\Visual Studio\\Projects\\LAb\\EfModels\\EfModels.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/g14wx/RiderProjects/lab2/EfModels/EfModels.csproj",
+        "projectUniqueName": "D:\\Programs\\Visual Studio\\Projects\\LAb\\EfModels\\EfModels.csproj",
         "projectName": "EfModels",
-        "projectPath": "/home/g14wx/RiderProjects/lab2/EfModels/EfModels.csproj",
-        "packagesPath": "/home/g14wx/.nuget/packages/",
-        "outputPath": "/home/g14wx/RiderProjects/lab2/EfModels/obj/",
+        "projectPath": "D:\\Programs\\Visual Studio\\Projects\\LAb\\EfModels\\EfModels.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "D:\\Programs\\Visual Studio\\Projects\\LAb\\EfModels\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/g14wx/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -74,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.200/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }

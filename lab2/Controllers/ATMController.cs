@@ -3,9 +3,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using EfModels;
 using lab2.Application.Commands.ATM;
+using lab2.Application.Commands.Transaction;
 using lab2.Application.Queries.ATM;
 using lab2.Application.Queries.BankAccount;
 using lab2.Application.Queries.SavingAccount;
+using lab2.Application.Queries.Transaction;
 using lab2.Domain.DTOs;
 using lab2.Domain.Models;
 using lab2.Presentation.Account;
@@ -101,7 +103,7 @@ namespace lab2.Controllers
         [HttpPost("Credit")]
         public async Task<IActionResult> Credit(TransaccionDTO transaccionDto)
         {
-            bool response = true;
+            /*bool response = true;
             switch (transaccionDto.Account)
             {
                 case "Saving":
@@ -112,8 +114,19 @@ namespace lab2.Controllers
                     break;
             }
 
-            return new RedirectResult($"/account/{transaccionDto.IdAccount}/{transaccionDto.Account}");
+            return new RedirectResult($"account/{transaccionDto.IdAccount}/{transaccionDto.Account}");*/
+            bool response = true;
+            switch (transaccionDto.Account)
+            {
+                case "Saving":
+                    response = await _mediator.Send(new AddSavingAccountTransactionCommand.Command(transaccionDto.IdAccount,transaccionDto.Amount,transaccionDto.Tipo,0, new DateTime()));
+                    break;
+                case "Checking":
+                    response = await _mediator.Send(new AddCheckingAccountTransactionCommand.Command(transaccionDto.IdAccount, transaccionDto.Amount, transaccionDto.Tipo, 0, new DateTime()));
+                    break;
+            }
 
+            return new RedirectResult($"account/{transaccionDto.IdAccount}/{transaccionDto.Account}"); 
         }
         [HttpPost("withdraw")]
         public async Task<IActionResult> WithDraw(TransaccionDTO transaccionDto)
@@ -123,12 +136,12 @@ namespace lab2.Controllers
                     {
                         case "Saving":
                             break;
-                        case "Cheking" :
-                            response = await _mediator.Send(new WithDrawChecking.Command(transaccionDto.IdAccount,transaccionDto.Amount));
+                        case "Checking" :
+                            //response = await _mediator.Send(new WithDrawChecking.Command(transaccionDto.IdCuenta,transaccionDto.Amount));
                             break;
                     }
 
-            return new RedirectResult($"/account/{transaccionDto.IdAccount}/{transaccionDto.Account}");
+            return new RedirectResult($"account/{transaccionDto.IdAccount}/{transaccionDto.Account}");
         }
 
     }
