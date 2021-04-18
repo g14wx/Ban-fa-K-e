@@ -112,7 +112,7 @@ namespace lab2.Controllers
                     break;
             }
 
-            return new RedirectResult($"/account/{transaccionDto.IdAccount}/{transaccionDto.Account}");
+            return new RedirectResult($"account/{transaccionDto.IdAccount}/{transaccionDto.Account}");
 
         }
         [HttpPost("withdraw")]
@@ -123,12 +123,12 @@ namespace lab2.Controllers
                     {
                         case "Saving":
                             break;
-                        case "Cheking" :
+                        case "Checking" :
                             response = await _mediator.Send(new WithDrawChecking.Command(transaccionDto.IdAccount,transaccionDto.Amount));
                             break;
                     }
 
-            return new RedirectResult($"/account/{transaccionDto.IdAccount}/{transaccionDto.Account}");
+            return new RedirectResult($"account/{transaccionDto.IdAccount}/{transaccionDto.Account}");
         }
 
     }

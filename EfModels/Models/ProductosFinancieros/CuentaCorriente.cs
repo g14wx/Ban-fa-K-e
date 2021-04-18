@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -14,5 +15,7 @@ namespace EfModels.Models.ProductosFinancieros
         public CuentaBancaria CntBancaria { get; set; }
         public bool IsActive { get; set; }
         public double Dialy { get; set; }
+
+        public List<Transaccion> Transacciones { get; set; }
     }
 }
