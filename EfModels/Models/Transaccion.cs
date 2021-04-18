@@ -11,10 +11,10 @@ namespace EfModels.Models
         public int Id { get; set; }
 
         [ForeignKey("CuentaAhorro")]
-        public int IdCuentaAhorro { get; set; }
+        public int? IdCuentaAhorro { get; set; }
 
         [ForeignKey("CuentaCorriente")]
-        public int IdCuentaCorriente { get; set; }
+        public int? IdCuentaCorriente { get; set; }
 
         public double Cantidad { get; set; }
 
