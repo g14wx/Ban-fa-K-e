@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using lab2.Application.Commands.CheckingAccount;
+using lab2.Application.Commands.Transaction;
 using lab2.Application.Queries.CheckingAccount;
 using lab2.Domain.DTOs;
 using lab2.Domain.Models;
@@ -31,6 +32,7 @@ namespace lab2.Controllers
         public async Task<RedirectResult> CreateCheckingAccount(CuentaCorrienteDTO cuentaCorrienteDto)
         {
             CuentaCorriente cc = await _mediator.Send(new AddChekingAccount.Command(cuentaCorrienteDto));
+            await _mediator.Send(new AddCheckingAccountTransactionCommand.Command(cc.Id,cc.Saldo,1,cc.Saldo, new DateTime()));
             return new RedirectResult($"/bankaccount?IdBankAccount={cuentaCorrienteDto.IdCuentaBancaria}");
         }
         
