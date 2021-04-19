@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using lab2.Application.Commands.SavingAccount;
+using lab2.Application.Commands.Transaction;
 using lab2.Application.Queries.SavingAccount;
 using lab2.Domain.DTOs;
 using lab2.Domain.Models;
@@ -38,6 +39,7 @@ namespace lab2.Controllers
         public async Task<RedirectResult> CreateSavingAccount(CuentaAhorroDTO cadto)
         {
             int id = await _mediator.Send(new AddSavingAccountCommand.Command(cadto.Saldo,cadto.TasaInteresMensual,cadto.IdCuentaBancaria));
+            await _mediator.Send(new AddSavingAccountTransactionCommand.Command(id,cadto.Saldo,1,cadto.Saldo, new DateTime()));
             return new RedirectResult($"/bankaccount?IdBankAccount={cadto.IdCuentaBancaria}");
         }
     }
