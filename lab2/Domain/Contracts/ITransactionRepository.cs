@@ -10,6 +10,6 @@ namespace lab2.Domain.Contracts
         public Task<List<Transaccion>> GetAllTransactionBySavingAccount(int IdSavingAccount);
         public Task<List<Transaccion>> GetAllTransactionByCheckingAccount(int IdCheckingAccount);
 
-        public Task<bool> RegisterTransaction(Transaccion transaccion);
+        public Task<Dictionary<string,string>> RegisterTransaction(Transaccion transaccion);
     }
 }

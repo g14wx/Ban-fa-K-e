@@ -26,7 +26,7 @@ namespace lab2.Application.Queries.Transaction
             }
             public async Task<List<TransactionsDTO>> Handle(Query request, CancellationToken cancellationToken)
             {
-                List<Transaccion> transactions = await _repository.GetAllTransactionByCheckingAccount(request.IdCuentaAhorro);
+                List<Transaccion> transactions = await _repository.GetAllTransactionBySavingAccount(request.IdCuentaAhorro);
                 List<TransactionsDTO> transactionsDTOs = _mapper.Map<List<Transaccion>, List<TransactionsDTO>>(transactions);
                 transactionsDTOs = transactionsDTOs.Select(dto =>
                 {

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EfModels;
@@ -63,23 +64,29 @@ namespace lab2.Controllers
             switch (account)
             {
                 case "Saving":
-                   CuentaAhorro ct = await _mediator.Send(new GetSavingAccount.Query(IdAccount));
+                    EfModels.Models.ProductosFinancieros.CuentaAhorro ct = _db.CuentaAhorros.FirstOrDefault(x => x.Id == IdAccount);
+                    List<lab2.Domain.DTOs.TransactionsDTO> savingList = await _mediator.Send(new GetSavingAccountTransactions.Query(IdAccount));
+                    double SaldoSaving = savingList[savingList.Count - 1].Saldo;
                     act = new AccountDTO()
                     {
-                        Amount = ct.Saldo
+                        Amount = SaldoSaving
                     };
                     break;
                 case "Checking":
-                    CuentaCorriente s = _db.CuentaCorrientes.FirstOrDefault(x => x.Id == IdAccount); 
-                act = new AccountDTO()
-                {
-                    Amount =s.Saldo
-                };
-                break;
+                    CuentaCorriente s = _db.CuentaCorrientes.FirstOrDefault(x => x.Id == IdAccount);
+                    List<lab2.Domain.DTOs.TransactionsDTO> checkingList = await _mediator.Send(new GetAllCheckingAccountTransactions.Query(IdAccount));
+                    double SaldoChecking = checkingList[checkingList.Count - 1].Saldo;
+                    act = new AccountDTO()
+                    {
+                        Amount = SaldoChecking
+                    };
+                    break;
             }
+
             ViewData["Title"] = "ATM";
             ViewBag.Account = account;
             ViewBag.IdAccount = IdAccount;
+            
             return View(act);
         }
 
@@ -103,26 +110,15 @@ namespace lab2.Controllers
         [HttpPost("Credit")]
         public async Task<IActionResult> Credit(TransaccionDTO transaccionDto)
         {
-            /*bool response = true;
-            switch (transaccionDto.Account)
-            {
-                case "Saving":
-                    response = await _mediator.Send(new CreditSaving.Command(transaccionDto.IdAccount, transaccionDto.Amount));
-                    break;
-                case "Checking" :
-                    response = await _mediator.Send(new Credit.Command(transaccionDto.IdAccount, transaccionDto.Amount));
-                    break;
-            }
 
-            return new RedirectResult($"account/{transaccionDto.IdAccount}/{transaccionDto.Account}");*/
-            bool response = true;
+            Dictionary<string, string> response;
             switch (transaccionDto.Account)
             {
                 case "Saving":
-                    response = await _mediator.Send(new AddSavingAccountTransactionCommand.Command(transaccionDto.IdAccount,transaccionDto.Amount,transaccionDto.Tipo,0, new DateTime()));
+                    response = await _mediator.Send(new AddSavingAccountTransactionCommand.Command(transaccionDto.IdAccount,transaccionDto.Amount,transaccionDto.Tipo,transaccionDto.Saldo + transaccionDto.Amount, DateTime.Now));
                     break;
                 case "Checking":
-                    response = await _mediator.Send(new AddCheckingAccountTransactionCommand.Command(transaccionDto.IdAccount, transaccionDto.Amount, transaccionDto.Tipo, 0, new DateTime()));
+                    response = await _mediator.Send(new AddCheckingAccountTransactionCommand.Command(transaccionDto.IdAccount, transaccionDto.Amount, transaccionDto.Tipo, transaccionDto.Saldo + transaccionDto.Amount, DateTime.Now));
                     break;
             }
 
@@ -131,15 +127,16 @@ namespace lab2.Controllers
         [HttpPost("withdraw")]
         public async Task<IActionResult> WithDraw(TransaccionDTO transaccionDto)
         {
-            bool response= true;
-                    switch (transaccionDto.Account)
-                    {
-                        case "Saving":
-                            break;
-                        case "Checking" :
-                            //response = await _mediator.Send(new WithDrawChecking.Command(transaccionDto.IdCuenta,transaccionDto.Amount));
-                            break;
-                    }
+            Dictionary<string, string> response;
+            switch (transaccionDto.Account)
+            {
+                case "Saving":
+                    response = await _mediator.Send(new AddSavingAccountTransactionCommand.Command(transaccionDto.IdAccount, transaccionDto.Amount, transaccionDto.Tipo, transaccionDto.Saldo - transaccionDto.Amount, DateTime.Now));
+                    break;
+                case "Checking" :
+                    response = await _mediator.Send(new AddCheckingAccountTransactionCommand.Command(transaccionDto.IdAccount, transaccionDto.Amount, transaccionDto.Tipo, transaccionDto.Saldo - transaccionDto.Amount, DateTime.Now));
+                    break;
+            }
 
             return new RedirectResult($"account/{transaccionDto.IdAccount}/{transaccionDto.Account}");
         }

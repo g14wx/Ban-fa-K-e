@@ -3,13 +3,14 @@ using System.Threading.Tasks;
 using lab2.Domain.Contracts;
 using System;
 using MediatR;
+using System.Collections.Generic;
 
 namespace lab2.Application.Commands.Transaction
 {
     public class AddCheckingAccountTransactionCommand
     {
-        public record Command(int IdCuentaCorriente,double Cantidad, int Tipo, double Saldo, DateTime Fecha) : IRequest<bool>;
-        public class Handler : IRequestHandler<Command, bool>
+        public record Command(int IdCuentaCorriente,double Cantidad, int Tipo, double Saldo, DateTime Fecha) : IRequest<Dictionary<string,string>>;
+        public class Handler : IRequestHandler<Command, Dictionary<string,string>>
         {
             private ITransactionRepository _repository;
 
@@ -18,7 +19,7 @@ namespace lab2.Application.Commands.Transaction
                 _repository = repository;
             }
 
-            public async Task<bool> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<Dictionary<string,string>> Handle(Command request, CancellationToken cancellationToken)
             {
                 Domain.Models.Transaccion transaction = new Domain.Models.Transaccion()
                 {
@@ -29,7 +30,7 @@ namespace lab2.Application.Commands.Transaction
                     Fecha = request.Fecha
                 };
 
-                bool response = await _repository.RegisterTransaction(transaction);
+                Dictionary<string,string> response = await _repository.RegisterTransaction(transaction);
 
                 return response;
             }
