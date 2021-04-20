@@ -280,20 +280,14 @@
                                                     <td class="px-6 py-4 whitespace-nowrap">
                                                       <div class="text-sm text-gray-900">$@savingAccount.Ganacias</div>
                                                     </td>
-                                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                          <a asp-controller="ATM" asp-action="ShowAccounts" asp-route-IdAccount="@savingAccount.Id" asp-route-account="Saving" class="text-indigo-600 hover:text-pink-900">Request Reactive</a>
-                                                          </td>
-                                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                      <a asp-controller="ATM" asp-action="ShowAccounts" asp-route-IdAccount="@savingAccount.Id" class="text-indigo-600 hover:text-pink-900">OPEN ATM</a>
-                                                    </td>
                                                     @if (!@savingAccount.IsActive)
                                                     {
                                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <a asp-controller="ATM" asp-action="ShowAccounts" asp-route-IdAccount="@savingAccount.Id" class="text-indigo-600 hover:text-pink-900">Request Reactive</a>
+                                            <a asp-controller="ATM" asp-action="ShowAccounts" asp-route-IdAccount="@savingAccount.Id"  class="text-indigo-600 hover:text-pink-900">Request Reactive</a>
                                                             </td>
                                                     }
                                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <a asp-controller="ATM" asp-action="ShowAccounts" asp-route-IdAccount="@savingAccount.Id" class="text-indigo-600 hover:text-pink-900">OPEN ATM</a>
+                                    <a asp-controller="ATM" asp-action="ShowAccounts" asp-route-IdAccount="@savingAccount.Id" asp-route-account="Saving" class="text-indigo-600 hover:text-pink-900">OPEN ATM</a>
                                                     </td>
                                                     
                                                   </tr>
