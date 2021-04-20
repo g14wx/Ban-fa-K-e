@@ -39,7 +39,7 @@ namespace lab2.Controllers
         public async Task<RedirectResult> CreateSavingAccount(CuentaAhorroDTO cadto)
         {
             int id = await _mediator.Send(new AddSavingAccountCommand.Command(cadto.Saldo,cadto.TasaInteresMensual,cadto.IdCuentaBancaria));
-            await _mediator.Send(new AddSavingAccountTransactionCommand.Command(id,cadto.Saldo,1,cadto.Saldo, new DateTime()));
+            await _mediator.Send(new AddSavingAccountTransactionCommand.Command(id,cadto.Saldo,1,cadto.Saldo, DateTime.Now));
             return new RedirectResult($"/bankaccount?IdBankAccount={cadto.IdCuentaBancaria}");
         }
     }

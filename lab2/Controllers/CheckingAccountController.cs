@@ -32,7 +32,7 @@ namespace lab2.Controllers
         public async Task<RedirectResult> CreateCheckingAccount(CuentaCorrienteDTO cuentaCorrienteDto)
         {
             CuentaCorriente cc = await _mediator.Send(new AddChekingAccount.Command(cuentaCorrienteDto));
-            await _mediator.Send(new AddCheckingAccountTransactionCommand.Command(cc.Id,cc.Saldo,1,cc.Saldo, new DateTime()));
+            await _mediator.Send(new AddCheckingAccountTransactionCommand.Command(cc.Id,cc.Saldo,1,cc.Saldo, DateTime.Now));
             return new RedirectResult($"/bankaccount?IdBankAccount={cuentaCorrienteDto.IdCuentaBancaria}");
         }
         
