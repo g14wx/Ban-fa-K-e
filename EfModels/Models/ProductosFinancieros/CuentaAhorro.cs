@@ -20,5 +20,7 @@ namespace EfModels.Models.ProductosFinancieros
         public double Dialy { get; set; }
 
         public List<Transaccion> Transacciones { get; set; }
+        
+        public bool RequestActive { get; set; } = false;
     }
 }
