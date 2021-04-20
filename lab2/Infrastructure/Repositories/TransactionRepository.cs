@@ -106,7 +106,7 @@ namespace lab2.Infrastructure.Repositories
                 sumaDiaria = await SumCheckingAccountTodayTransactions(t.IdCuentaCorriente);
             }
 
-            if (sumaDiaria >= 1000)
+            if ((sumaDiaria + t.Cantidad) > 1000)
             {
                 return new Dictionary<string, string>()
                 {
