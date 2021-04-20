@@ -59,6 +59,7 @@ namespace lab2.Infrastructure.Repositories
         {
             if (transaccion.Tipo == 1)
             {
+                transaccion.Saldo = Math.Round(transaccion.Saldo, 2);
                 EfModels.Models.Transaccion trsn = _mapper.Map<EfModels.Models.Transaccion>(transaccion);
                 await _repository.Transacciones.AddAsync(trsn);
                 await _repository.SaveChangesAsync();
@@ -70,6 +71,7 @@ namespace lab2.Infrastructure.Repositories
             }
             else
             {
+                transaccion.Saldo = Math.Round(transaccion.Saldo, 2);
                 Dictionary<string, string> response = await EvaluarCantidadRetiro(transaccion);
                 if (response["res"] == "success")
                 {
