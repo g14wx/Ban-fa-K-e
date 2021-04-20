@@ -15,6 +15,8 @@ using lab2.Presentation.Account;
 using lab2.Presentation.ATM;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using CuentaAhorro = EfModels.Models.ProductosFinancieros.CuentaAhorro;
 using CuentaCorriente = EfModels.Models.ProductosFinancieros.CuentaCorriente;
 
 namespace lab2.Controllers
@@ -148,6 +150,58 @@ namespace lab2.Controllers
             TempData["status"] = response["res"];
             return new RedirectResult($"account/{transaccionDto.IdAccount}/{transaccionDto.Account}");
         }
+
+        [HttpGet("requestActive/{tipo}/{IdAccount}")]
+        public async Task<IActionResult> ActiveSolicitud(String tipo,int IdAccount )
+        {
+            switch (tipo)
+            {
+                case "Saving":
+                    CuentaAhorro ca= _db.CuentaAhorros.FirstOrDefault(x => x.Id == IdAccount);
+                    ca.RequestActive = true;
+                    _db.CuentaAhorros.Attach(ca);
+                    _db.Entry(ca).State = EntityState.Modified; 
+                    await _db.SaveChangesAsync();
+                    break;
+                
+                case "Checking":
+                    CuentaCorriente cc= _db.CuentaCorrientes.FirstOrDefault(x => x.Id == IdAccount);
+                    cc.RequestActive = true;
+                    _db.CuentaCorrientes.Attach(cc);
+                    _db.Entry(cc).State = EntityState.Modified; 
+                    await _db.SaveChangesAsync();
+                    break;
+            }
+
+            TempData["mesage"] = "La solitud se ha enviado, para que puedan reactivar su cuenta";
+            TempData["status"] = "success";
+                    return new RedirectResult("/ATM/0");
+        }
+        
+        [HttpGet("activeAccount/{tipo}/{IdAccount}")]
+                public async Task<IActionResult> ActiveAccount(int IdAccount, String tipo)
+                {
+                    switch (tipo)
+                    {
+                        case "Saving":
+                            CuentaAhorro ca= _db.CuentaAhorros.FirstOrDefault(x => x.Id == IdAccount);
+                            ca.RequestActive = true;
+                            _db.CuentaAhorros.Attach(ca);
+                            _db.Entry(ca).State = EntityState.Modified; 
+                            await _db.SaveChangesAsync();
+                            break;
+                        
+                        case "Checking":
+                            CuentaCorriente cc= _db.CuentaCorrientes.FirstOrDefault(x => x.Id == IdAccount);
+                            cc.RequestActive = true;
+                            _db.CuentaCorrientes.Attach(cc);
+                            _db.Entry(cc).State = EntityState.Modified; 
+                            await _db.SaveChangesAsync();
+                            break;
+                    }
+        
+                    return new RedirectResult("/ATM/0");
+                }
 
     }
 }

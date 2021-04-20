@@ -43,6 +43,7 @@ namespace lab2.Application.Queries.BankAccount
             {
                 Domain.Models.User user = await _userRepository.FindUserByIdAsync(request.IdUser);
                 CuentaBancaria cntBancaria = await _bankAccountRepository.FindBankAccount(request.IdAccount);
+                user.CntBancaria = cntBancaria;
                 List<CuentaAhorro> SavingAccounts =
                     await _savingAccountRepository.GetAllSavingAccountFromABankAccount(request.IdAccount);
                 List<CuentaCorriente> chekingAccounts =

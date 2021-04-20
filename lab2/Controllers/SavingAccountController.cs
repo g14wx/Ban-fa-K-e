@@ -42,5 +42,6 @@ namespace lab2.Controllers
             await _mediator.Send(new AddSavingAccountTransactionCommand.Command(id,cadto.Saldo,1,cadto.Saldo, DateTime.Now));
             return new RedirectResult($"/bankaccount?IdBankAccount={cadto.IdCuentaBancaria}");
         }
+
     }
 }
