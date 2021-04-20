@@ -37,9 +37,9 @@ namespace lab2.Infrastructure.Repositories
 
         public async Task<CuentaAhorro> CreateSavingAccount(CuentaAhorro cuentaAhorro)
         {
+            cuentaAhorro.IsActive = true;
             EfModels.Models.ProductosFinancieros.CuentaAhorro savingAccount = _mapper
                 .Map<EfModels.Models.ProductosFinancieros.CuentaAhorro>(cuentaAhorro);
-            cuentaAhorro.IsActive = true;
             await _db.CuentaAhorros.AddAsync(savingAccount);
             await _db.SaveChangesAsync();
             return _mapper.Map<CuentaAhorro>(savingAccount);

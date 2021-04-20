@@ -4,6 +4,13 @@
      <title>@ViewBag.title</title>
      <link rel="stylesheet" asp-href-include="css/style.css">
      
+<!--NAVBAR HANDLER-->
+<script asp-src-include="js/layout/navbarHandler.js"></script>
+<script asp-src-include="js/layout/TableFunctionality.js"></script>
+<script asp-src-include="js/layout/ModalFunctionallity.js"></script>
+<script asp-src-include="js/query-3.6.0.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script asp-src-include="js/alert.js"></script>
     @RenderSection("Links", required:false)
  </head>
  <body class="h-full w-full flex flex-col justify-center items-center">
@@ -96,7 +103,7 @@
                                             <li class="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-3 hover:bg-indigo-700 hover:text-white px-3 font-normal">Templates</li>
                                             <li class="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-3 hover:bg-indigo-700 hover:text-white px-3 font-normal">Components</li>
                                         </ul>
-                                       Users 
+                                       Administration 
                                         <span class="ml-2">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z"></path>
@@ -105,7 +112,7 @@
                                         </span>
                                     </a>-->
                                    <a href="/users" class="mx-10 py-6 block text-sm leading-5 text-gray-700 hover:text-indigo-700 focus:outline-none focus:text-indigo-700 transition duration-150 ease-in-out">
-                                       Users
+                                       Administration
                                    </a>
                                    <a asp-controller="ATM" asp-action="Index" class="mx-10 py-6 block text-sm leading-5 text-gray-700 hover:text-indigo-700 focus:outline-none focus:text-indigo-700 transition duration-150 ease-in-out">
                                                                          ATM 
@@ -291,7 +298,7 @@
                                                     <div class="w-6 h-6 md:w-8 md:h-8 text-gray-800">
                                                         <img src="icons/team.svg" alt="">
                                                     </div>
-                                                    <p class="text-gray-800 xl:text-base md:text-2xl text-base ml-3">Users</p>
+                                                    <p class="text-gray-800 xl:text-base md:text-2xl text-base ml-3">Administration</p>
                                                 </div>
                                             </li>
                                         </a>
@@ -301,7 +308,7 @@
                                                     <div class="w-6 h-6 md:w-8 md:h-8 text-gray-800">
                                                         <img src="icons/league.svg" alt="">
                                                     </div>
-                                                    <p class="text-gray-800 xl:text-base md:text-2xl text-base ml-3">Users</p>
+                                                    <p class="text-gray-800 xl:text-base md:text-2xl text-base ml-3">Administration</p>
                                                 </div>
                                             </li>
                                         </a>
@@ -361,13 +368,6 @@
 </html>
     @RenderSection("Scripts", required:false)
 
-<!--NAVBAR HANDLER-->
-<script asp-src-include="js/layout/navbarHandler.js"></script>
-<script asp-src-include="js/layout/TableFunctionality.js"></script>
-<script asp-src-include="js/layout/ModalFunctionallity.js"></script>
-<script asp-src-include="js/query-3.6.0.min.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script asp-src-include="js/alert.js"></script>
 <!--<!DOCTYPE html>
 <html lang="en">
 <head>

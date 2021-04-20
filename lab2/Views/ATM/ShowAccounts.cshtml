@@ -57,8 +57,7 @@
                             </div>
 
                             <input type="submit" class="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded">
-                                WithDraw
-                            </input>
+
                         </form>
                     </div>
                    
@@ -74,7 +73,11 @@
                    											class="select-none rounded-md flex flex-1 items-center p-4 transition duration-500 ease-in-out transform hover:-translate-y-2 rounded-2xl border-2 p-6 mt-3 border-red-400 hover:shadow-2xl"
                    										>
                    											<div class="flex-1 pl-1 mr-16">
-                   												<div class="font-medium">Domain of the startup</div>
+                                                                <div class="font-medium">Domain of the startup</div>
+                                                                @if (TempData["message"] != null)
+                                                                {
+                                                                    @Html.Raw(TempData["message"]);
+                                                                }
                    											</div>
                    											<div
                    												class="flex w-1/4 text-wrap text-center flex-col text-white text-bold rounded-md bg-red-500 justify-center items-center mr-10 p-2"
@@ -92,9 +95,19 @@
         </div>
     </div>
 
-                   
+ <script>
+document.addEventListener("DOMContentLoaded", function(event) { 
+    @if (@TempData["status"] != null){
+        @switch (@TempData["status"])
+        {
+            case "success":
+            @Html.Raw("swal('"+@TempData["message"]+"', 'Operacion Realizada con exito', 'success');");
+                break;
 
-<!-- support me by buying a coffee -->
-    <!--<a href="https://www.buymeacoffee.com/danimai" target="_blank" class="bg-purple-600 p-2 rounded-lg text-white fixed right-0 bottom-0">
-        Support me
-    </a>-->
+            case "error":
+            @Html.Raw("swal('"+@TempData["message"]+"', 'La cantidad ingresada no es la indicada', 'error');");
+                break;
+        }
+        }
+});
+ </script>                  

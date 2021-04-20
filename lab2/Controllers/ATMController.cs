@@ -111,7 +111,7 @@ namespace lab2.Controllers
         public async Task<IActionResult> Credit(TransaccionDTO transaccionDto)
         {
 
-            Dictionary<string, string> response;
+            Dictionary<string, string> response = new Dictionary<string, string>();
             switch (transaccionDto.Account)
             {
                 case "Saving":
@@ -122,12 +122,15 @@ namespace lab2.Controllers
                     break;
             }
 
+            TempData["message"] = response["msg"];
+            TempData["status"] = response["res"];
+            
             return new RedirectResult($"account/{transaccionDto.IdAccount}/{transaccionDto.Account}"); 
         }
         [HttpPost("withdraw")]
         public async Task<IActionResult> WithDraw(TransaccionDTO transaccionDto)
         {
-            Dictionary<string, string> response;
+            Dictionary<string, string> response = new Dictionary<string, string>();
             switch (transaccionDto.Account)
             {
                 case "Saving":
@@ -138,6 +141,8 @@ namespace lab2.Controllers
                     break;
             }
 
+            TempData["message"] = response["msg"];
+            TempData["status"] = response["res"];
             return new RedirectResult($"account/{transaccionDto.IdAccount}/{transaccionDto.Account}");
         }
 
