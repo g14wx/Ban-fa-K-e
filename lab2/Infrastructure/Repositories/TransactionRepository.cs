@@ -76,6 +76,25 @@ namespace lab2.Infrastructure.Repositories
                     EfModels.Models.Transaccion trsn = _mapper.Map<EfModels.Models.Transaccion>(transaccion);
                     await _repository.Transacciones.AddAsync(trsn);
                     await _repository.SaveChangesAsync();
+
+                    if (transaccion.IdCuentaAhorro > 0)
+                    {
+                        EfModels.Models.ProductosFinancieros.CuentaAhorro savingAccount =
+                            _repository.CuentaAhorros.FirstOrDefault(ch => ch.Id == transaccion.IdCuentaAhorro);
+                        savingAccount.Saldo = transaccion.Saldo;
+                        _repository.CuentaAhorros.Attach(savingAccount);
+                        _repository.Entry(savingAccount).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                        await _repository.SaveChangesAsync();
+                    }
+                    else
+                    {
+                        EfModels.Models.ProductosFinancieros.CuentaCorriente checkingAccount =
+                            _repository.CuentaCorrientes.FirstOrDefault(ch => ch.Id == transaccion.IdCuentaCorriente);
+                        checkingAccount.Saldo = transaccion.Saldo;
+                        _repository.CuentaCorrientes.Attach(checkingAccount);
+                        _repository.Entry(checkingAccount).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                        await _repository.SaveChangesAsync();
+                    }
                 }
 
                 return response;
@@ -126,7 +145,6 @@ namespace lab2.Infrastructure.Repositories
 
             if (t.Saldo >= 0 && t.Saldo < 1)
             {
-                bool response = true;
                 if (t.IdCuentaAhorro > 0)
                 {
                     EfModels.Models.ProductosFinancieros.CuentaAhorro savingAccount =
