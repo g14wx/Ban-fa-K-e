@@ -32,7 +32,7 @@ namespace lab2.Controllers
         public async Task<RedirectResult> CreateTimeDepositAccount(DepositoAPlazoDTO depositoAPlazoDto)
         {
             DepositoAPlazo dp = await _mediator.Send(new AddTimeDeposit.Command(depositoAPlazoDto.Cantidad,depositoAPlazoDto.CantidadDias,depositoAPlazoDto.IdCuentaBancaria));
-            return new RedirectResult($"/bankaccount?IdBankAccount={depositoAPlazoDto.IdCuentaBancaria}");
+            return new RedirectResult($"/bankaccount/GetAccountProducts/{dp.IdCuentaBancaria}");
         }
     }
 }
