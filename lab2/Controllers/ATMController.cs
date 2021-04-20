@@ -185,7 +185,8 @@ namespace lab2.Controllers
                     {
                         case "Saving":
                             CuentaAhorro ca= _db.CuentaAhorros.FirstOrDefault(x => x.Id == IdAccount);
-                            ca.RequestActive = true;
+                            ca.RequestActive = false;
+                            ca.IsActive = true;
                             _db.CuentaAhorros.Attach(ca);
                             _db.Entry(ca).State = EntityState.Modified; 
                             await _db.SaveChangesAsync();
@@ -193,14 +194,18 @@ namespace lab2.Controllers
                         
                         case "Checking":
                             CuentaCorriente cc= _db.CuentaCorrientes.FirstOrDefault(x => x.Id == IdAccount);
-                            cc.RequestActive = true;
+                            cc.RequestActive = false;
+                            cc.IsActive = true;
                             _db.CuentaCorrientes.Attach(cc);
                             _db.Entry(cc).State = EntityState.Modified; 
                             await _db.SaveChangesAsync();
                             break;
                     }
         
-                    return new RedirectResult("/ATM/0");
+            TempData["mesage"] = "La solitud se ha enviado, para que puedan reactivar su cuenta";
+            TempData["status"] = "success";
+                var IdBankAccount = Int16.Parse(Request.Cookies["IdBankAccount"]);
+                    return new RedirectResult($"/bankaccount/GetAccountProducts/{IdAccount}");
                 }
 
     }

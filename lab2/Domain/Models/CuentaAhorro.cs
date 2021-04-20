@@ -10,5 +10,8 @@ namespace lab2.Domain.Models
         public int nMeses { get; set; }
         
         public bool IsActive { get; set; }
+        
+        
+        public bool RequestActive { get; set; }
     }
 }

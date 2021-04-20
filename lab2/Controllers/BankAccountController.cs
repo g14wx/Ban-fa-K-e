@@ -49,6 +49,7 @@ namespace lab2.Controllers
             return new RedirectResult($"/bankaccount/{Account.IdUser}/{status}");
         }
 
+        [HttpGet("GetAccountProducts/{IdBankAccount}")]
         public async Task<ViewResult> GetAccountProducts(int IdBankAccount)
         {
             CookieOptions option = new CookieOptions();

@@ -404,3 +404,20 @@
     </section>
   </main>
   </div>
+    
+<script>
+document.addEventListener("DOMContentLoaded", function(event) {
+    @if (@TempData["status"] != null){
+          @switch (@TempData["status"])
+          {
+              case "success":
+              @Html.Raw("swal('"+@TempData["message"]+"', 'Operacion Realizada con exito', 'success');");
+                  break;
+  
+              case "error":
+              @Html.Raw("swal('"+@TempData["message"]+"', 'Algo Salio mal', 'error');");
+                  break;
+          }
+    }
+  });
+  </script>
