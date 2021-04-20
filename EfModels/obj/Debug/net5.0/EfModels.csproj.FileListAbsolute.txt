@@ -27,3 +27,4 @@ D:\Programs\Visual Studio\Projects\LAb\EfModels\obj\Debug\net5.0\EfModels.dll
 D:\Programs\Visual Studio\Projects\LAb\EfModels\obj\Debug\net5.0\ref\EfModels.dll
 D:\Programs\Visual Studio\Projects\LAb\EfModels\obj\Debug\net5.0\EfModels.pdb
 D:\Programs\Visual Studio\Projects\LAb\EfModels\obj\Debug\net5.0\EfModels.genruntimeconfig.cache
+D:\Programs\Visual Studio\Projects\LAb\EfModels\obj\Debug\net5.0\EfModels.csprojAssemblyReference.cache

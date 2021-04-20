@@ -44,6 +44,18 @@ namespace lab2.Infrastructure.Repositories
             await _db.SaveChangesAsync();
             return _mapper.Map<CuentaAhorro>(savingAccount);
         }
+
+        public async Task<bool> DesactivarCuenta(int IdCheckingAccount)
+        {
+            EfModels.Models.ProductosFinancieros.CuentaAhorro checkingAccount =
+                        _db.CuentaAhorros.FirstOrDefault(ch => ch.Id == IdCheckingAccount);
+            checkingAccount.IsActive = false;
+            _db.CuentaAhorros.Attach(checkingAccount);
+            _db.Entry(checkingAccount).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            await _db.SaveChangesAsync();
+            return true;
+        }
+
         public async Task<bool> WithDrawMoney(int IdCheckingAccount, double Amount)
                 {
                     EfModels.Models.ProductosFinancieros.CuentaCorriente checkingAccount =
