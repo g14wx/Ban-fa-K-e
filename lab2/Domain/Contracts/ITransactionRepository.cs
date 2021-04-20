@@ -11,5 +11,9 @@ namespace lab2.Domain.Contracts
         public Task<List<Transaccion>> GetAllTransactionByCheckingAccount(int IdCheckingAccount);
 
         public Task<Dictionary<string,string>> RegisterTransaction(Transaccion transaccion);
+        
+         public Task<Double> SumCheckingAccountTodayTransactions(int IdCheckingAccount);
+
+         public Task<Double> SumSavingAccountTodayTransactions(int IdSavingAccount);
     }
 }
