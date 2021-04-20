@@ -33,7 +33,7 @@ namespace lab2.Controllers
         {
             CuentaCorriente cc = await _mediator.Send(new AddChekingAccount.Command(cuentaCorrienteDto));
             await _mediator.Send(new AddCheckingAccountTransactionCommand.Command(cc.Id,cc.Saldo,1,cc.Saldo, DateTime.Now));
-            return new RedirectResult($"/bankaccount?IdBankAccount={cuentaCorrienteDto.IdCuentaBancaria}");
+            return new RedirectResult($"/bankaccount/GetAccountProducts/{cuentaCorrienteDto.IdCuentaBancaria}");
         }
         
         
