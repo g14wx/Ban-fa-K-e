@@ -52,6 +52,10 @@ namespace lab2.Infrastructure.Repositories
                     {
                         checkingAccount.Saldo -= Amount;
                         checkingAccount.Dialy -= Amount;
+                        if (checkingAccount.Saldo <= 1.0)
+                        {
+                            checkingAccount.IsActive = false;
+                        }
                         _db.Update(checkingAccount);
                         await _db.SaveChangesAsync();
                         return true;

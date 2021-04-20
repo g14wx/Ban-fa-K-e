@@ -71,6 +71,7 @@ namespace lab2.Controllers
                     {
                         Amount = SaldoSaving
                     };
+                    ViewBag.Transactions = savingList;
                     break;
                 case "Checking":
                     CuentaCorriente s = _db.CuentaCorrientes.FirstOrDefault(x => x.Id == IdAccount);
@@ -80,6 +81,8 @@ namespace lab2.Controllers
                     {
                         Amount = SaldoChecking
                     };
+                    
+                    ViewBag.Transactions = checkingList;
                     break;
             }
 

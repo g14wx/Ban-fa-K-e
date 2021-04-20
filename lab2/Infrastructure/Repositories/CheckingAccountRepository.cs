@@ -62,6 +62,10 @@ private IMapper _mapper;
             if (Amount <= 400.00 && checkingAccount.Dialy <= 1000.00)
             {
                 checkingAccount.Saldo -= Amount;
+                if (checkingAccount.Saldo <= 1.0)
+                {
+                    checkingAccount.IsActive = false;
+                }
                 _db.Update(checkingAccount);
                 return true;
             }
