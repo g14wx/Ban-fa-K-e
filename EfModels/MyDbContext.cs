@@ -17,7 +17,6 @@ namespace EfModels
         public virtual DbSet<CuentaCorriente> CuentaCorrientes {get; set; }
         public virtual DbSet<CuentaAhorro> CuentaAhorros {get; set; }
         public virtual DbSet<DepositoAPlazo> DepositoAPlazos {get; set; }
-        public virtual DbSet<Notificacion> Notificacions { get; set; }
         public virtual DbSet<Transaccion> Transacciones {get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

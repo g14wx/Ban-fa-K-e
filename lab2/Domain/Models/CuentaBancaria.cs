@@ -8,5 +8,7 @@ namespace lab2.Domain.Models
         public String NCuenta { get; set; }
         public String Pin { get; set; }
         public int IdUser { get; set; }
+        
+        public bool RequestActive { get; set; }
     }
 }

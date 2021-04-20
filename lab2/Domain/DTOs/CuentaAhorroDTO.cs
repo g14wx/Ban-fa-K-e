@@ -11,5 +11,7 @@ namespace lab2.Domain.DTOs
         public int Nmeses  {get;set; }
         
         public bool IsActive { get; set; }
+        
+        public bool RequestActive { get; set; }
     }
 }
