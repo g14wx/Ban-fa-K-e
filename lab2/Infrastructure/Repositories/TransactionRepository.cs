@@ -124,14 +124,14 @@ namespace lab2.Infrastructure.Repositories
                 };
             }
 
-            if (t.Saldo >= 0 && t.Saldo < 1)
+            /*if (t.Saldo >= 0 && t.Saldo < 1)
             {
                 return new Dictionary<string, string>()
                 {
-                    { "res", "error" },
+                    { "res", "alert" },
                     { "msg", "Debe indicar si desea proceder"}
                 };
-            }
+            }*/
 
             return new Dictionary<string, string>()
             {
